@@ -1,0 +1,60 @@
+<mvc:View	controllerName="com.springer.workshopapp.controller.appController.vendorDetails" 
+			xmlns:mvc="sap.ui.core.mvc" 
+			xmlns:core="sap.ui.core" 
+			xmlns="sap.m">
+	<Page 
+		showNavButton="{device>/isPhone}" 
+		navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage" 
+		title="{i18n>detailTitle}">
+		<content>
+			<ObjectHeader title="{Name1}" number="" numberUnit="">
+				<ObjectAttribute title="VendorID"	text="{ path: 'VendorNumber', 
+															formatter: 'com.springer.workshopapp.util.Formatter.overlayTenZero' }"/>
+				<ObjectAttribute title="Country"	text="{Land1}" />
+				<ObjectAttribute title="City"		text="{Ort01}" />
+				<ObjectAttribute title="ZipCode"	text="{Pstlz}" />
+				<ObjectAttribute title="Street"		text="{Stras}" />
+			</ObjectHeader>
+			<IconTabBar select="onDetailSelect" id="idIconTabBar">
+				<items>
+					<IconTabFilter key="VendorSearchMailsSet" text="Mail Addresses" icon="sap-icon://email">
+						<!--key="VendorSearchMailsSet" -->
+						<content>
+							<List
+								id="listMails"
+								mode="{device>/listMode}"
+								noDataText="{i18n>ListNoMail}"
+				                growingThreshold="20"
+								growing="true"
+								growingScrollToLoad="true">
+								<items>
+									<!-- Items loaded via fragment com.springer.workshopapp.view.mailAdressesForm -->
+								</items>
+							</List>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter key="VendorSearchEntitiesSet" text="Entity Data" icon="sap-icon://factory">
+					    <!--key="VendorSearchEntitiesSet" -->
+					    <content>
+							<List
+								id="listEntities"
+								mode="{device>/listMode}"
+								noDataText="{i18n>ListNoEntities}"
+				                growingThreshold="20"
+								growing="true"
+								growingScrollToLoad="true">
+								<items>
+									<!-- Items loaded via fragment com.springer.workshopapp.view.entityForm -->
+								</items>
+							</List>
+					    </content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

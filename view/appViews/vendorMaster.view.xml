@@ -1,0 +1,109 @@
+<mvc:View 
+	controllerName="com.springer.workshopapp.controller.appController.vendorMaster" 
+	displayBlock="true" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m">
+	<Page
+		id="page"
+		title="{i18n>masterTitle}"
+		showNavButton="true"
+		navButtonPress="onNavBack"> 
+    <headerContent>
+            <Button
+                icon="sap-icon://home"
+                press="handleNavToHome" />
+	</headerContent>
+		<subHeader>
+			<Bar id="searchBar">
+				<contentMiddle>
+					<SearchField 
+						id="searchField" 
+						showRefreshButton="{device>/isNoTouch}" 
+						placeholder="{i18n>masterSearchPlaceholder}"
+						search="onSearch"
+						tooltip="{i18n>masterSearchTooltip}" 
+						width="100%"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<!-- first radio button -> Vendor Number or Vendor name -->
+		    <RadioButtonGroup	id="radbutVSearch" 
+		    					width="100%" 
+		    					columns="3" 
+		    					selectedIndex="-1" 
+		    					fieldGroupIds="rad_but_search_type" 
+		    					select="onSelect">
+		        <buttons>
+		            <RadioButton	id="rad_but_vnumber" 
+		            				xmlns:core="sap.ui.core" 
+		            				xmlns:mvc="sap.ui.core.mvc" 
+		            				xmlns="sap.m" 
+		            				groupName="radbutVSearch" 
+		            				text="Vendor Number" 
+		            				fieldGroupIds="radbutVSearch"/>
+		            				
+		            <RadioButton	id="rad_but_vname" 
+		            				selected="true"
+		            				xmlns:core="sap.ui.core" 
+		            				xmlns:mvc="sap.ui.core.mvc" 
+		            				xmlns="sap.m" 
+		            				groupName="radbutVSearch" 
+		            				text="Vendor Name" 
+		            				fieldGroupIds="radbutVSearch" />
+		        </buttons>
+		    </RadioButtonGroup>
+		    
+			<!-- second radio button -> search option -> equals  or  contains -->
+		    <RadioButtonGroup	id="radbutVopt"
+		    					width="100%" 
+		    					columns="3" 
+		    					selectedIndex="-1"  
+		    					fieldGroupIds="rad_but_search_opt" 
+		    					select="onSelect">
+		        <buttons>
+		            <RadioButton	id="rad_but_equals"
+		            				xmlns:core="sap.ui.core" 
+		            				xmlns:mvc="sap.ui.core.mvc" 
+		            				xmlns="sap.m" 
+		            				groupName="radbutVopt" 
+		            				text="Equals" 
+		            				fieldGroupIds="radbutVopt"/>
+		            				
+		            <RadioButton	id="rad_but_contains"
+		            				selected="true"
+		            				xmlns:core="sap.ui.core" 
+		            				xmlns:mvc="sap.ui.core.mvc"
+		            				xmlns="sap.m" 
+		            				groupName="radbutVopt" 
+		            				text="Contains" 
+		            				fieldGroupIds="radbutVopt" />
+		        </buttons>
+		    </RadioButtonGroup>
+		    <Button text="Filter" width="100px" id="searchButton" press="onSearch"/>
+		    
+			<!-- listz with vendors -->
+			<List	id="vendorMasterList" 
+					items="{/VendorSearchSet}" 
+					mode="{device>/listMode}" 
+					noDataText="{i18n>masterListNoDataText}" 
+					select="onSelect" 
+					growing="true" 
+                    growingThreshold="30"
+					growingScrollToLoad="true">
+				<items>
+					<ObjectListItem type="{device>/listItemType}"
+									press="onSelect" 
+									title="{Name1}" 
+									number="{VendorNumber}" 
+									numberUnit=""/>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

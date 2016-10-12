@@ -1,0 +1,57 @@
+<mvc:View
+	controllerName="com.springer.workshopapp.controller.appController.otherApp"
+	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		.htmlTableTest {
+			margin: 50px;
+		}
+    	.mySuperRedButton {
+			margin: 20px;
+        	color: red;
+    	}
+    	.mySuperRedButton2 {
+			margin: 40px;
+        	color: green;
+    	}
+   </html:style>
+	<Page 
+	    title="{i18n>otherTitle}"
+	    enableScrolling="false"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+
+        <content>
+			<html:div id="htmlId">
+				
+				<html:table class="htmlTableTest" border="5" width="50%" cellpadding="4" cellspacing="3">
+				   <html:tr>
+				      <html:th colspan="2">
+				      	<html:h3>table title</html:h3>
+				      </html:th>
+				   </html:tr>
+				   <html:tr>
+				      <html:th>column a</html:th>
+				      <html:th>column b</html:th>
+				   </html:tr>
+				   <html:tr align="center">
+				      <html:td>data 1a</html:td>
+				      <html:td>data 2a</html:td>
+				   </html:tr>
+				   <html:tr align="center">
+				      <html:td>data 1b</html:td>
+				      <html:td>data 2b</html:td>
+				   </html:tr>
+				</html:table>
+
+    			<Button class="mySuperRedButton2"  text="Press Me. I am a SAPUI5 Button" press="onPress" />
+    			<html:button class="mySuperRedButton" >No, press me. I am native HTML Button.</html:button>
+    		</html:div>
+        </content>
+        
+		<footer>
+		</footer>
+	</Page>
+</mvc:View>

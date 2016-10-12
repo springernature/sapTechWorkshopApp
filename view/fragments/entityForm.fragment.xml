@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<ObjectListItem
+		type="Inactive"
+		title="{ path: 'CompanyCode', 
+				 formatter: 'com.springer.workshopapp.util.Formatter.overlayFourZero' }"
+	>
+		<ObjectAttribute title="Payment terms" 
+						 text="{PaymentTerm}"
+			/>
+		<ObjectAttribute title="Payment Block" 
+						 text="{ path: 'PaymentBlock', 
+				 formatter: 'com.springer.workshopapp.util.Formatter.sapBoolToTrueFalse' }"
+			/>
+	</ObjectListItem>
+</core:FragmentDefinition>

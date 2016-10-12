@@ -1,0 +1,11 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m">
+	<SplitApp
+       id="idSplitAppControl" 
+       height="100%"
+       mode="ShowHideMode"
+       homeIcon="sap-icon://menu2"
+   />
+</mvc:View>

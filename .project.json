@@ -1,0 +1,16 @@
+{
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/SBMC/WORKSHOPAPP_SRV/",
+    "metadataFilePath": "",
+    "mockRequestsFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  }
+}
