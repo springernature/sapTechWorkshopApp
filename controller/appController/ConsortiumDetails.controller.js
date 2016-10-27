@@ -9,7 +9,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	onInit: function() {
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
 
-		if (sap.ui.Device.system.phone) {
+		if (sap.ui.Device.system.phone) { 
 			//don't wait for the master on a phone
 			this.oInitialLoadFinishedDeferred.resolve();
 		} else {
@@ -86,7 +86,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 				oListMails.unbindAggregation("items");
 				oListMails.bindAggregation("items", {
 					path: sAggregationPath,
-					template: sap.ui.xmlfragment("com.springer.workshopapp.view.fragments.listFragment", this)
+					template: sap.ui.xmlfragment("com.springer.workshopapp.view.fragments.consortiumFragment", this)
 				});
 				break;
 			case "ConsortiumMore":

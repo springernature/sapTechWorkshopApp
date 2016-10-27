@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<StandardListItem
+		title="{Institution}"
+		type="Active"
+		description="Institution Information"
+		icon="sap-icon://accidental-leave"
+		iconDensityAware="false"
+		iconInset="false" />
+</core:FragmentDefinition>

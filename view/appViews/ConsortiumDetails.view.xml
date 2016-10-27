@@ -9,8 +9,9 @@
 		title="{i18n>detailTitle}">
 		<content>
 			<ObjectHeader title="{ %HeaderAttribute1% }" number="" numberUnit="">
-				<ObjectAttribute title="HeaderAttribute1"	text="{ %HeaderAttribute2% }" />
-				<ObjectAttribute title="HeaderAttribute2"	text="{ %HeaderAttribute3% }" />
+				<ObjectAttribute title="Partner Number"	text="{Partner}" />
+				<ObjectAttribute title="Consortium"	text="{Consortium}" />
+				<ObjectAttribute title="Head of Account" text="{HeadOfAccount}" />
 			</ObjectHeader>
 			<IconTabBar select="onDetailSelect" id="idIconTabBar">
 				<items>
