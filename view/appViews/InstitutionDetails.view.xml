@@ -20,7 +20,7 @@
 							<!-- Device Model Options: https://help.sap.com/saphelp_uiaddon10/helpdata/en/32/5b8edafcfa4c9c8fbd42455a60e379/content.htm -->
 							<List
 								id="listInstitution"
-								mode="{device>/listMode}"
+								mode="{device>/listMode}" 
 								noDataText="{i18n>ListNoDataText}"
 				                growingThreshold="20"
 								growing="true"
