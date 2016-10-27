@@ -2,6 +2,33 @@
 	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
 	<edmx:DataServices m:DataServiceVersion="2.0">
 		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="WORKSHOPAPP_SRV" xml:lang="de" sap:schema-version="0">
+			<EntityType Name="WorkshopTestData" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Client"/>
+					<PropertyRef Name="Partner"/>
+					<PropertyRef Name="SalesOrg"/>
+				</Key>
+				<Property Name="Client" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Mandant" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="GeschPartner" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Verkaufsorg." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HeadOfAccount" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="PartnerKind" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Partnerart" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Anrede" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="PartnerName" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Name" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Consortium" Type="Edm.String" Nullable="false" MaxLength="60" sap:label="Konsortium Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Institution" Type="Edm.String" Nullable="false" MaxLength="100" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Author" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Name" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
 			<EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
 				<Key>
 					<PropertyRef Name="ID"/>
@@ -152,12 +179,12 @@
 				<Property Name="Stcd2" Type="Edm.String" MaxLength="11" sap:label="Steuernummer 2" sap:creatable="false" sap:updatable="false"/>
 				<Property Name="Stceg" Type="Edm.String" MaxLength="20" sap:label="USt-Id.Nr" sap:creatable="false" sap:updatable="false"/>
 				<Property Name="Stenr" Type="Edm.String" MaxLength="18" sap:label="Steuernummer" sap:creatable="false" sap:updatable="false"/>
-				<NavigationProperty Name="VendorSearchMailsSet" Relationship="WORKSHOPAPP_SRV.VendorSearchToMails" FromRole="FromRole_VendorSearchToMails"
-					ToRole="ToRole_VendorSearchToMails"/>
-				<NavigationProperty Name="VendorSearchBankDataSet" Relationship="WORKSHOPAPP_SRV.VendorSearchToBankData"
-					FromRole="FromRole_VendorSearchToBankData" ToRole="ToRole_VendorSearchToBankData"/>
 				<NavigationProperty Name="VendorSearchEntitiesSet" Relationship="WORKSHOPAPP_SRV.VendorSearchToEntities"
 					FromRole="FromRole_VendorSearchToEntities" ToRole="ToRole_VendorSearchToEntities"/>
+				<NavigationProperty Name="VendorSearchBankDataSet" Relationship="WORKSHOPAPP_SRV.VendorSearchToBankData"
+					FromRole="FromRole_VendorSearchToBankData" ToRole="ToRole_VendorSearchToBankData"/>
+				<NavigationProperty Name="VendorSearchMailsSet" Relationship="WORKSHOPAPP_SRV.VendorSearchToMails" FromRole="FromRole_VendorSearchToMails"
+					ToRole="ToRole_VendorSearchToMails"/>
 			</EntityType>
 			<EntityType Name="WBSsearch" sap:content-version="1">
 				<Key>
@@ -169,6 +196,7 @@
 				<Property Name="IsbnIssn" Type="Edm.String" MaxLength="20" sap:label="ISBN/ISSN" sap:creatable="false" sap:updatable="false"/>
 				<Property Name="Spin" Type="Edm.String" MaxLength="10" sap:label="SPIN/Artikelnr" sap:creatable="false" sap:updatable="false"/>
 				<Property Name="ShortText" Type="Edm.String" MaxLength="40" sap:label="Bezeichnung" sap:creatable="false" sap:updatable="false"/>
+				<Property Name="IpOwnerEntity" Type="Edm.String" MaxLength="4" sap:label="Buchungskreis" sap:creatable="false" sap:updatable="false"/>
 			</EntityType>
 			<EntityType Name="CompanyCodes" sap:content-version="1">
 				<Key>
@@ -302,6 +330,8 @@
 				</ReferentialConstraint>
 			</Association>
 			<EntityContainer Name="WORKSHOPAPP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="WorkshopTestDataSet" EntityType="WORKSHOPAPP_SRV.WorkshopTestData" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
 				<EntitySet Name="NotificationCollection" EntityType="WORKSHOPAPP_SRV.Notification" sap:creatable="false" sap:updatable="false"
 					sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
 				<EntitySet Name="VendorInvoicesSet" EntityType="WORKSHOPAPP_SRV.VendorInvoices" sap:creatable="false" sap:updatable="false"
