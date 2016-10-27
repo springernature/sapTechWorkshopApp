@@ -32,8 +32,7 @@
 		    <RadioButtonGroup	id="radbutVSearch" 
 		    					width="100%" 
 		    					columns="3" 
-		    					selectedIndex="-1"
-		    					select="onSelect">
+		    					selectedIndex="-1">
 		        <buttons>
 		            <RadioButton	id="radA_button_opt1" 
 		            				groupName="radbutVSearch" 
@@ -48,8 +47,7 @@
 		    <RadioButtonGroup	id="radbutVopt"
 		    					width="100%" 
 		    					columns="3" 
-		    					selectedIndex="-1"
-		    					select="onSelect">
+		    					selectedIndex="-1">
 		        <buttons>
 		            <RadioButton	id="radB_button_opt1"
 		            				groupName="radbutVopt" 

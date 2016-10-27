@@ -191,7 +191,6 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	showDetail: function(oItem) {
 		// If we're on a phone, include nav in history; if not, don't.
 		var bReplace = jQuery.device.is.phone ? false : true;
-		console.log(oItem.getBindingContext().getPath().substr(1));
 		this.getRouter().navTo("ven_detail", {
 			from: "ven_master",
 			entity: oItem.getBindingContext().getPath().substr(1),
