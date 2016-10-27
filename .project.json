@@ -16,5 +16,9 @@
   "projectType": [
     "com.sap.webide.hybrid.cordova",
     "sap.watt.uitools.ide.fiori"
-  ]
+  ],
+  "deploy": {
+    "destination": "sprgts",
+    "name": "ZSAPWORKSHOPAPP"
+  }
 }

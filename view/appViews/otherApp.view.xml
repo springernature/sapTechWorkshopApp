@@ -3,6 +3,7 @@
 	xmlns="sap.m"
     xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<html:style>
 		.htmlTableTest {
@@ -17,15 +18,17 @@
         	color: green;
     	}
    </html:style>
+   <!-- here -> enableScrolling="true" -->
 	<Page 
 	    title="{i18n>otherTitle}"
-	    enableScrolling="false"
+	    enableScrolling="true"
 		showNavButton="true"
 		navButtonPress="onNavBack">
 
         <content>
+
+    		<!-- some native HTML -->
 			<html:div id="htmlId">
-				
 				<html:table class="htmlTableTest" border="5" width="50%" cellpadding="4" cellspacing="3">
 				   <html:tr>
 				      <html:th colspan="2">
@@ -49,6 +52,56 @@
     			<Button class="mySuperRedButton2"  text="Press Me. I am a SAPUI5 Button" press="onPress" />
     			<html:button class="mySuperRedButton" >No, press me. I am native HTML Button.</html:button>
     		</html:div>
+    		
+    		
+    		<!-- an SAPUI5 form -->
+			<form:SimpleForm maxContainerCols="2" >
+            	<form:title>
+                	<core:Title text="Enter Data in Worksho Test table"/>
+            	</form:title>
+ 
+            	<Label text="Partner"/>
+            	<Input id="formPartner" type="Number" value="" tooltip="Just type a PartnerID" maxLength="10" />
+
+            	<Label text="SalesOrg"/>
+            	<Input id="formSalesOrg" type="Number" value="" tooltip="Just type a Sales Organisation" maxLength="4" />
+
+            	<Label text="HeadOfAccount"/>
+	              <ComboBox id="formHeadOfAccount" Value=" " >
+	                <core:Item text=" "  />
+	                <core:Item text="Y"  />
+	                <core:Item text="N"  />
+	                <core:Item text="S"  />
+	                <core:Item text="E"  />
+	              </ComboBox>
+            
+            	<Label text="PartnerKind"/>
+	              <ComboBox id="formPartnerKind" Value="0001" >
+	                <core:Item text="0001"  />
+	                <core:Item text="0002"  />
+	                <core:Item text="0003"  />
+	                <core:Item text="0004"  />
+	              </ComboBox>
+            	
+            	<Label text="Title"/>
+            	<Input id="formTitle" value="" tooltip="Just type Title" maxLength="4" />
+            	
+            	<Label text="PartnerName"/>
+            	<Input id="formPartnerName" value="" tooltip="Just type PartnerName" maxLength="40" />
+            	
+            	<Label text="Consortium"/>
+            	<Input id="formConsortium" value="" tooltip="Just type Consortium" maxLength="60" />
+            	
+            	<Label text="Institution"/>
+            	<Input id="formInstitution" value="" tooltip="Just type Institution" maxLength="100" />
+            	
+            	<Label text="Author"/>
+            	<Input id="formAuthor" value="" tooltip="Just type Author" maxLength="40" />
+            	
+            	<Label text=""/>
+				<Button text="submit" press="onSubmitForm"></Button>
+        	</form:SimpleForm>
+        	
         </content>
         
 		<footer>

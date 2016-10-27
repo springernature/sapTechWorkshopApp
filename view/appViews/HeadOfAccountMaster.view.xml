@@ -28,7 +28,7 @@
 			</Bar>
 		</subHeader>
 		<content>
-			<!-- first radio button -> Vendor Number or Vendor name -->
+			<!-- first radio button -> Attribute Options -->
 		    <RadioButtonGroup	id="radbutVSearch" 
 		    					width="100%" 
 		    					columns="3" 
@@ -62,9 +62,9 @@
 		    </RadioButtonGroup>
 		    <Button text="Filter" width="100px" id="searchButton" press="onSearch"/>
 		    
-			<!-- listz with vendors -->
+			<!-- list with HoT -->
 			<List	id="HeadOfAccountMasterList" 
-					items="{/  %ServiceName%   }"  
+					items="{/WorkshopTestDataSet}"  
 					mode="{device>/listMode}" 
 					noDataText="{i18n>masterListNoDataText}" 
 					select="onSelect" 
@@ -74,9 +74,9 @@
 				<items>
 					<ObjectListItem type="{device>/listItemType}"
 									press="onSelect" 
-									title="{   %Attribut%    }" 
-									number="{  %Attribut%    }" 
-									numberUnit=""/>
+									title="{Partner}" 
+									number="{PartnerName}" 
+									numberUnit="{HeadOfAccount}"/>
 				</items>
 			</List>
 		</content>

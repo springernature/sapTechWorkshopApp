@@ -81,7 +81,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 
 		switch (this.sTabKey) {
 			case "ConsortiumDetails":
-				var sAggregationPath = "/ %ServiceName%"; // odata service
+				var sAggregationPath = "/WorkshopTestDataSet"; // odata service
 				var oListMails = this.getView().byId("listConsortium");
 				oListMails.unbindAggregation("items");
 				oListMails.bindAggregation("items", {

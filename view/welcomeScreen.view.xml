@@ -26,12 +26,12 @@
                 />
                 <StandardTile 
                     id="App_B"
-                    icon="sap-icon://example"
+                    icon="sap-icon://upload"
                     type="None"
                     number="Example"
                     numberUnit="Single Screen"
                     title=""
-                    info="With HTML content"
+                    info="Create some Content"
     				press="onOtherApp"
                 />
                 <StandardTile 
