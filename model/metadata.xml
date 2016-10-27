@@ -1,6 +1,7 @@
 <edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
 	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
 	<edmx:DataServices m:DataServiceVersion="2.0">
+		
 		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="WORKSHOPAPP_SRV" xml:lang="de" sap:schema-version="0">
 			<EntityType Name="WorkshopTestData" sap:content-version="1">
 				<Key>
