@@ -9,8 +9,9 @@
 		title="{i18n>detailTitle}">
 		<content>
 			<ObjectHeader title="{ %HeaderAttribute1% }" number="" numberUnit="">
-				<ObjectAttribute title="HeaderAttribute1"	text="{ %HeaderAttribute2% }" />
-				<ObjectAttribute title="HeaderAttribute2"	text="{ %HeaderAttribute3% }" />
+				<ObjectAttribute title="Name"	text="{PartnerName}" />
+				<ObjectAttribute title="Address"	text="{Partner}" />
+				<ObjectAttribute title="SalesOrg"	text="{SalesOrg}" />
 			</ObjectHeader>
 			<IconTabBar select="onDetailSelect" id="idIconTabBar">
 				<items>
@@ -32,7 +33,11 @@
 					</IconTabFilter>
 					<IconTabFilter key="InstitutionMore" text="More Data" icon="sap-icon://enter-more">
 					    <content>
+							<List id="listInstitution1">
+								<items>
 
+								</items>
+							</List>
 					    </content>
 					</IconTabFilter>
 				</items>
