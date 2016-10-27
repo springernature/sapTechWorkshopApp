@@ -26,27 +26,67 @@
                 />
                 <StandardTile 
                     id="App_B"
-                    icon="sap-icon://cloud"
+                    icon="sap-icon://example"
                     type="None"
-                    number="Other"
-                    numberUnit="App"
+                    number="Example"
+                    numberUnit="Single Screen"
                     title=""
-                    info="not Implemented yet"
+                    info="With HTML content"
     				press="onOtherApp"
                 />
                 <StandardTile 
                     id="App_C"
-                    icon="sap-icon://cloud"
+                    icon="sap-icon://account"
                     type="None"
-                    number="Other"
-                    numberUnit="App"
+                    number="Account"
+                    numberUnit="Head of"
                     title=""
-                    info="not Implemented yet"
-    				press="onAnotherApp"
+                    info="Head of Account"
+    				press="onHeadOfAccountPress"
                 />
                 <StandardTile 
                     id="App_D"
-                    icon="sap-icon://cloud"
+                    icon="sap-icon://factory"
+                    type="None"
+                    number="Consortium"
+                    numberUnit=""
+                    title=""
+                    info=""
+    				press="onConsortium"
+                />
+                <StandardTile 
+                    id="App_E"
+                    icon="sap-icon://insurance-house"
+                    type="None"
+                    number="Institution"
+                    numberUnit=""
+                    title=""
+                    info=""
+    				press="onInstitution"
+                />
+                <StandardTile 
+                    id="App_F"
+                    icon="sap-icon://employee-pane"
+                    type="None"
+                    number="Author"
+                    numberUnit=""
+                    title=""
+                    info=""
+    				press="onAuthor"
+                />
+                <StandardTile 
+                    id="App_G"
+                    icon="sap-icon://search"
+                    type="None"
+                    number="BPSearch"
+                    numberUnit="just Search"
+                    title=""
+                    info=""
+    				press="onBPSearch"
+                />
+                <StandardTile 
+                    id="App_Z"
+                    icon="sap-icon://example"
                     type="None"
                     number="Other"
                     numberUnit="App"

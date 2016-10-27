@@ -81,6 +81,34 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		}, this.bReplace);
 	},
 	
+	onHeadOfAccountPress: function() {
+		this.getRouter().navTo("headOfAccount_master", {
+			currentView: this.getView()
+		}, this.bReplace);
+	},
+	
+	onConsortium: function() {
+		this.getRouter().navTo("Consortium_master", {
+			currentView: this.getView()
+		}, this.bReplace);
+	},
+	onInstitution: function() {
+		this.getRouter().navTo("Institution_master", {
+			currentView: this.getView()
+		}, this.bReplace);
+	},
+	onAuthor: function() {
+		this.getRouter().navTo("Author_master", {
+			currentView: this.getView()
+		}, this.bReplace);
+	},
+	onBPSearch: function() {
+		this.getRouter().navTo("just_BPSearch", {
+			currentView: this.getView()
+		}, this.bReplace);
+	},
+	
+	
 	onAnotherApp: function() {
 		sap.m.MessageToast.show(this.i18model.getText("NotImplementedYet"));
 		/*

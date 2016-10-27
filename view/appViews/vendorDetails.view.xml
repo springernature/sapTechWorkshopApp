@@ -6,7 +6,7 @@
 		showNavButton="{device>/isPhone}" 
 		navButtonPress="onNavBack"
 		class="sapUiFioriObjectPage" 
-		title="{i18n>detailTitle}">
+		title="{i18n>detailTitleVendor}">
 		<content>
 			<ObjectHeader title="{Name1}" number="" numberUnit="">
 				<ObjectAttribute title="VendorID"	text="{ path: 'VendorNumber', 

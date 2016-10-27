@@ -1,0 +1,45 @@
+<mvc:View	controllerName="com.springer.workshopapp.controller.appController.InstitutionDetails" 
+			xmlns:mvc="sap.ui.core.mvc" 
+			xmlns:core="sap.ui.core" 
+			xmlns="sap.m">
+	<Page 
+		showNavButton="{device>/isPhone}" 
+		navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage" 
+		title="{i18n>detailTitle}">
+		<content>
+			<ObjectHeader title="{ %HeaderAttribute1% }" number="" numberUnit="">
+				<ObjectAttribute title="HeaderAttribute1"	text="{ %HeaderAttribute2% }" />
+				<ObjectAttribute title="HeaderAttribute2"	text="{ %HeaderAttribute3% }" />
+			</ObjectHeader>
+			<IconTabBar select="onDetailSelect" id="idIconTabBar">
+				<items>
+					<IconTabFilter key="InstitutionDetails" text="Detail Data" icon="sap-icon://detail-view">
+						<content>
+							<!-- Device Model Options: https://help.sap.com/saphelp_uiaddon10/helpdata/en/32/5b8edafcfa4c9c8fbd42455a60e379/content.htm -->
+							<List
+								id="listInstitution"
+								mode="{device>/listMode}"
+								noDataText="{i18n>ListNoDataText}"
+				                growingThreshold="20"
+								growing="true"
+								growingScrollToLoad="true">
+								<items>
+									<!-- Items loaded via fragment com.springer.workshopapp.view.mailAdressesForm -->
+								</items>
+							</List>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter key="InstitutionMore" text="More Data" icon="sap-icon://enter-more">
+					    <content>
+
+					    </content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		<footer>
+			<Toolbar></Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,11 +1,11 @@
 <mvc:View 
-	controllerName="com.springer.workshopapp.controller.appController.vendorMaster" 
+	controllerName="com.springer.workshopapp.controller.appController.ConsortiumMaster" 
 	displayBlock="true" 
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns="sap.m">
 	<Page
 		id="page"
-		title="{i18n>masterTitleVendor}"
+		title="{i18n>masterTitle}"
 		showNavButton="true"
 		navButtonPress="onNavBack"> 
     <headerContent>
@@ -15,6 +15,7 @@
 		<subHeader>
 			<Bar id="searchBar">
 				<contentMiddle>
+					<!-- Device Model Options: https://help.sap.com/saphelp_uiaddon10/helpdata/en/32/5b8edafcfa4c9c8fbd42455a60e379/content.htm -->
 					<SearchField 
 						id="searchField" 
 						showRefreshButton="{device>/isNoTouch}" 
@@ -34,13 +35,13 @@
 		    					selectedIndex="-1"
 		    					select="onSelect">
 		        <buttons>
-		            <RadioButton	id="rad_but_vnumber" 
+		            <RadioButton	id="radA_button_opt1" 
 		            				groupName="radbutVSearch" 
-		            				text="Vendor Number" />
-		            <RadioButton	id="rad_but_vname" 
+		            				text="Attribute 1" />
+		            <RadioButton	id="radA_button_opt2" 
 		            				selected="true"
 		            				groupName="radbutVSearch" 
-		            				text="Vendor Name"  />
+		            				text="Attribute 2"  />
 		        </buttons>
 		    </RadioButtonGroup>
 			<!-- second radio button -> search option -> equals  or  contains -->
@@ -50,20 +51,20 @@
 		    					selectedIndex="-1"
 		    					select="onSelect">
 		        <buttons>
-		            <RadioButton	id="rad_but_equals"
+		            <RadioButton	id="radB_button_opt1"
 		            				groupName="radbutVopt" 
 		            				text="Equals" />
-		            <RadioButton	id="rad_but_contains"
+		            <RadioButton	id="radB_button_opt2"
 		            				selected="true"
 		            				groupName="radbutVopt" 
 		            				text="Contains"  />
 		        </buttons>
 		    </RadioButtonGroup>
 		    <Button text="Filter" width="100px" id="searchButton" press="onSearch"/>
-
+		    
 			<!-- listz with vendors -->
-			<List	id="vendorMasterList" 
-					items="{/VendorSearchSet}" 
+			<List	id="ConsortiumMasterList" 
+					items="{/  %ServiceName%   }"  
 					mode="{device>/listMode}" 
 					noDataText="{i18n>masterListNoDataText}" 
 					select="onSelect" 
@@ -73,16 +74,18 @@
 				<items>
 					<ObjectListItem type="{device>/listItemType}"
 									press="onSelect" 
-									title="{Name1}" 
-									number="{VendorNumber}" 
+									title="{   %Attribut%    }" 
+									number="{  %Attribut%    }" 
 									numberUnit=""/>
 				</items>
 			</List>
 		</content>
+<!--
 		<footer>
 			<Toolbar>
 				
 			</Toolbar>
 		</footer>
+-->
 	</Page>
 </mvc:View>

@@ -1,7 +1,7 @@
 jQuery.sap.require("com.springer.workshopapp.util.Formatter");
 jQuery.sap.require("com.springer.workshopapp.util.Controller");
 
-com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.controller.appController.vendorMaster", {
+com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.controller.appController.ConsortiumMaster", {
 
 	/**
 	 * Called when the master list controller is instantiated. 
@@ -16,15 +16,16 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		});
 		
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
+
 		var oEventBus = this.getEventBus();
-		this.getView().byId("vendorMasterList").attachEventOnce("updateFinished", function() {
+		this.getView().byId("ConsortiumMasterList").attachEventOnce("updateFinished", function() {
 			this.oInitialLoadFinishedDeferred.resolve();
-			oEventBus.publish("vendorMaster", "InitialLoadFinished", {
-				oListItem: this.getView().byId("vendorMasterList").getItems()[0]
+			oEventBus.publish("ConsortiumMaster", "InitialLoadFinished", {
+				oListItem: this.getView().byId("ConsortiumMasterList").getItems()[0]
 			});
 		}, this);
 
-		oEventBus.subscribe("vendorDetails", "TabChanged", this.onDetailTabChanged, this);
+		oEventBus.subscribe("ConsortiumDetails", "TabChanged", this.onDetailTabChanged, this);
 
 		//on phones, we will not have to select anything in the list so we don't need to attach to events
 		if (sap.ui.Device.system.phone) {
@@ -33,8 +34,8 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 
 		this.getRouter().attachRoutePatternMatched(this.onRouteMatched, this);
 
-		oEventBus.subscribe("vendorDetails", "Changed", this.onDetailChanged, this);
-		oEventBus.subscribe("vendorDetails", "NotFound", this.onNotFound, this);
+		oEventBus.subscribe("ConsortiumDetails", "Changed", this.onDetailChanged, this);
+		oEventBus.subscribe("ConsortiumDetails", "NotFound", this.onNotFound, this);
 	},
 
 	/**
@@ -44,14 +45,14 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	onRouteMatched: function(oEvent) {
 		var sName = oEvent.getParameter("name");
 
-		if (sName !== "ven_master") {
+		if (sName !== "Consortium_master") {
 			return;
 		}
 
 		//Load the detail view in desktop
 		this.getRouter().myNavToWithoutHash({
 			currentView: this.getView(),
-			targetViewName: "com.springer.workshopapp.view.appViews.vendorDetails",
+			targetViewName: "com.springer.workshopapp.view.appViews.ConsortiumDetails",
 			targetViewType: "XML"
 		});
 
@@ -68,7 +69,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 			this.jsonAppModel = sap.ui.getCore().getModel("jsonAppModel");
 		}
 		
-		this.jsonAppModel.currentScreen = "VendorApp";
+		this.jsonAppModel.currentScreen = "ConsortiumApp";
 		sap.ui.getCore().setModel(this.jsonAppModel, "jsonAppModel");
 		
 		this.getView().setBusy(false);
@@ -84,7 +85,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		var sProductPath = oData.sProductPath;
 		//Wait for the list to be loaded once
 		this.waitForInitialListLoading(function() {
-			var oList = this.getView().byId("vendorMasterList");
+			var oList = this.getView().byId("ConsortiumMasterList");
 
 			var oSelectedItem = oList.getSelectedItem();
 			// the correct item is already selected
@@ -125,14 +126,14 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	 * Detail NotFound event handler
 	 */
 	onNotFound: function() {
-		this.getView().byId("vendorMasterList").removeSelections();
+		this.getView().byId("ConsortiumMasterList").removeSelections();
 	},
 
 	/**
 	 * set the first item as selected item
 	 */
 	selectFirstItem: function() {
-		var oList = this.getView().byId("vendorMasterList");
+		var oList = this.getView().byId("ConsortiumMasterList");
 		var aItems = oList.getItems();
 		if (aItems.length) {
 			oList.setSelectedItem(aItems[0], true);
@@ -150,27 +151,31 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		var filters = [];
 		var searchString = this.getView().byId("searchField").getValue();
 		
-		// rad_but_equals
-		// rad_but_contains
-		
-		var searchOperator = sap.ui.model.FilterOperator.Contains;
-		if (this.getView().byId("rad_but_equals").getSelected() === true) {
-			searchOperator = sap.ui.model.FilterOperator.EQ;
+		var searchAttribute = "Attribute1";
+		if (this.getView().byId("radA_button_opt2").getSelected() === true) {
+			searchAttribute = "Attribute2";
 		}
 		
-		var searchAttribute = "Name1";
-		if (this.getView().byId("rad_but_vnumber").getSelected() === true) {
-			searchAttribute = "VendorNumber";
+		var searchOperator = sap.ui.model.FilterOperator.EQ;
+		if (this.getView().byId("radB_button_opt2").getSelected() === true) {
+			searchOperator = sap.ui.model.FilterOperator.Contains;
 		}
+		
 
 		if (searchString && searchString.length > 0) {
 			filters = [new sap.ui.model.Filter(searchAttribute, searchOperator, searchString)];
 		}
 
 		// update list binding
-		var list = this.getView().byId("vendorMasterList");
+		var list = this.getView().byId("ConsortiumMasterList");
+		
+		sap.m.MessageToast.show("Search: " + searchOperator + " " + searchAttribute);
+		
+		/*
 		list.getBinding("items").filter(filters);
 		this._selectedItemIdx = list.indexOfItem(list.getSelectedItem());
+		*/
+	
 	},
 
 	/**
@@ -192,8 +197,8 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		// If we're on a phone, include nav in history; if not, don't.
 		var bReplace = jQuery.device.is.phone ? false : true;
 		console.log(oItem.getBindingContext().getPath().substr(1));
-		this.getRouter().navTo("ven_detail", {
-			from: "ven_master",
+		this.getRouter().navTo("Consortium_detail", {
+			from: "Consortium_master",
 			entity: oItem.getBindingContext().getPath().substr(1),
 			tab: this.sTab
 		}, bReplace);

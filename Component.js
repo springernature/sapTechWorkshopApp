@@ -4,7 +4,7 @@ jQuery.sap.require("com.springer.workshopapp.MyRouter");
 
 sap.ui.core.UIComponent.extend("com.springer.workshopapp.Component", {
 	metadata: {
-		name: "Springer SAp Tech Workshop App",
+		name: "Springer SAP Tech Workshop App",
 		version: "1.0",
 		includes: [],
 		dependencies: {
@@ -74,6 +74,122 @@ sap.ui.core.UIComponent.extend("com.springer.workshopapp.Component", {
                         }
                     ]
                 },
+				{
+					pattern: "HoT",
+					name: "_headOfAccount",
+					view: "AppSplit",
+					targetAggregation: "pages",
+					targetControl: "idAppControl",
+					viewLevel: 1,
+                    subroutes: [
+                        {
+                            pattern : "HoT",
+                            name: "headOfAccount_master",
+                            view: "appViews/HeadOfAccountMaster",
+                            targetAggregation : "masterPages",
+                            targetControl : "idSplitAppControl",
+                            viewLevel: 2,
+                            subroutes : [
+                                {
+                                    pattern : "HoT/{entity}/:tab:",
+                                    name: "headOfAccount_detail",
+                                    view: "appViews/HeadOfAccountDetails",
+                                    targetAggregation: "detailPages",
+                                    viewLevel: 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+				{
+					pattern: "Consortium",
+					name: "_Consortium",
+					view: "AppSplit",
+					targetAggregation: "pages",
+					targetControl: "idAppControl",
+					viewLevel: 1,
+                    subroutes: [
+                        {
+                            pattern : "Consortium",
+                            name: "Consortium_master",
+                            view: "appViews/ConsortiumMaster",
+                            targetAggregation : "masterPages",
+                            targetControl : "idSplitAppControl",
+                            viewLevel: 2,
+                            subroutes : [
+                                {
+                                    pattern : "Consortium/{entity}/:tab:",
+                                    name: "Consortium_detail",
+                                    view: "appViews/ConsortiumDetails",
+                                    targetAggregation: "detailPages",
+                                    viewLevel: 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+				{
+					pattern: "Institution",
+					name: "_Institution",
+					view: "AppSplit",
+					targetAggregation: "pages",
+					targetControl: "idAppControl",
+					viewLevel: 1,
+                    subroutes: [
+                        {
+                            pattern : "Institution",
+                            name: "Institution_master",
+                            view: "appViews/InstitutionMaster",
+                            targetAggregation : "masterPages",
+                            targetControl : "idSplitAppControl",
+                            viewLevel: 2,
+                            subroutes : [
+                                {
+                                    pattern : "Institution/{entity}/:tab:",
+                                    name: "Institution_detail",
+                                    view: "appViews/InstitutionDetails",
+                                    targetAggregation: "detailPages",
+                                    viewLevel: 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+				{
+					pattern: "Author",
+					name: "_Author",
+					view: "AppSplit",
+					targetAggregation: "pages",
+					targetControl: "idAppControl",
+					viewLevel: 1,
+                    subroutes: [
+                        {
+                            pattern : "Author",
+                            name: "Author_master",
+                            view: "appViews/AuthorMaster",
+                            targetAggregation : "masterPages",
+                            targetControl : "idSplitAppControl",
+                            viewLevel: 2,
+                            subroutes : [
+                                {
+                                    pattern : "Author/{entity}/:tab:",
+                                    name: "Author_detail",
+                                    view: "appViews/AuthorDetails",
+                                    targetAggregation: "detailPages",
+                                    viewLevel: 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+				{
+					pattern: "BPSearch",
+					name: "just_BPSearch",
+					view: "appViews/just_BPSearch",
+					viewLevel: 1,
+					targetAggregation: "pages",
+					targetControl: "idAppControl"
+				},
 				{
 					pattern: "{all*}",
 					name: "catchallDetail",

@@ -1,7 +1,7 @@
 jQuery.sap.require("com.springer.workshopapp.util.Formatter");
 jQuery.sap.require("com.springer.workshopapp.util.Controller");
 
-com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.controller.appController.vendorDetails", {
+com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.controller.appController.ConsortiumDetails", {
 
 	/**
 	 * Called when the detail list controller is instantiated. 
@@ -14,7 +14,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 			this.oInitialLoadFinishedDeferred.resolve();
 		} else {
 			this.getView().setBusy(true);
-			this.getEventBus().subscribe("vendorMaster", "InitialLoadFinished", this.onMasterLoaded, this);
+			this.getEventBus().subscribe("ConsortiumMaster", "InitialLoadFinished", this.onMasterLoaded, this);
 		}
 		this.getRouter().attachRouteMatched(this.onRouteMatched, this);
 	},
@@ -39,33 +39,32 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	 */
 	onRouteMatched: function(oEvent) {
 		var oParameters = oEvent.getParameters();
-
-		var oView = this.getView();
+		
 		// when detail navigation occurs, update the binding context
-		if (oParameters.name !== "ven_detail") {
+		if (oParameters.name !== "Consortium_detail") {
 			return;
 		}
 
+// binding the clicked item from the list to the detail screen
+// and take care of Tab data
 		var sEntityPath = "/" + oParameters.arguments.entity;
 		this.bindView(sEntityPath);
 
-		var oIconTabBar = oView.byId("idIconTabBar");
-
-		// Which tab?
+// check which tab should be selected ->  select the detail tab 
 		this.sTabKey = oParameters.arguments.tab;
 		if (typeof this.sTabKey === "undefined") {
-			this.sTabKey = "VendorSearchMailsSet";
+			this.sTabKey = "ConsortiumMailsSet";
 		}
-		this.getEventBus().publish("vendorDetails", "TabChanged", {
+		this.getEventBus().publish("ConsortiumDetails", "TabChanged", {
 			sTabKey: this.sTabKey
 		});
 
+		var oView = this.getView();
+		var oIconTabBar = oView.byId("idIconTabBar");
 		if (oIconTabBar.getSelectedKey() !== this.sTabKey) {
 			oIconTabBar.setSelectedKey(this.sTabKey);
 		}
-
 		this.getView().setBusy(false);
-
 	},
 
 	/**
@@ -77,29 +76,25 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		oView.bindElement(sEntityPath);
 
 		if (typeof this.sTabKey === "undefined") {
-			this.sTabKey = "VendorSearchMailsSet";
+			this.sTabKey = "ConsortiumDetails";
 		}
-		var sAggregationPath = sEntityPath + "/" + this.sTabKey;
 
 		switch (this.sTabKey) {
-			case "VendorSearchMailsSet":
-				var oListMails = this.getView().byId("listMails");
+			case "ConsortiumDetails":
+				var sAggregationPath = "/ %ServiceName%"; // odata service
+				var oListMails = this.getView().byId("listConsortium");
 				oListMails.unbindAggregation("items");
 				oListMails.bindAggregation("items", {
 					path: sAggregationPath,
-					template: sap.ui.xmlfragment("com.springer.workshopapp.view.fragments.mailAdressesForm", this)
+					template: sap.ui.xmlfragment("com.springer.workshopapp.view.fragments.listFragment", this)
 				});
 				break;
-			case "VendorSearchEntitiesSet":
-				var oListEntities = this.getView().byId("listEntities");
-				oListEntities.unbindAggregation("items");
-				oListEntities.bindAggregation("items", {
-					path: sAggregationPath,
-					template: sap.ui.xmlfragment("com.springer.workshopapp.view.fragments.entityForm", this)
-				});
+			case "ConsortiumMore":
+				
+				sap.m.MessageToast.show(this.i18model.getText("NotImplementedYet"));
+				
 				break;
 			default:
-
 		}
 	},
 
@@ -118,7 +113,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	 * publish Detail Changed event
 	 */
 	fireDetailChanged: function(sEntityPath) {
-		this.getEventBus().publish("vendorDetails", "Changed", {
+		this.getEventBus().publish("ConsortiumDetails", "Changed", {
 			sEntityPath: sEntityPath
 		});
 	},
@@ -127,7 +122,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	 * publish Detail NotFound event
 	 */
 	fireDetailNotFound: function() {
-		this.getEventBus().publish("vendorDetails", "NotFound");
+		this.getEventBus().publish("ConsortiumDetails", "NotFound");
 	},
 
 	/**
@@ -135,7 +130,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	 */
 	onNavBack: function() {
 		// This is only relevant when running on phone devices
-		this.getRouter().myNavBack("ven_master");
+		this.getRouter().myNavBack("Consortium_master");
 	},
 
 	/**
@@ -143,7 +138,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	 */
 	onDetailSelect: function(oEvent) {
 		this.sTabKey = oEvent.getParameter("selectedKey");
-		sap.ui.core.UIComponent.getRouterFor(this).navTo("ven_detail", {
+		sap.ui.core.UIComponent.getRouterFor(this).navTo("Consortium_detail", {
 			entity: oEvent.getSource().getBindingContext().getPath().slice(1),
 			tab: this.sTabKey
 		}, true);

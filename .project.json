@@ -12,5 +12,9 @@
     "defaultLanguage": "en",
     "defaultI18NPropertyFile": "",
     "resourceModelName": ""
-  }
+  },
+  "projectType": [
+    "com.sap.webide.hybrid.cordova",
+    "sap.watt.uitools.ide.fiori"
+  ]
 }

@@ -1,0 +1,21 @@
+<mvc:View
+	controllerName="com.springer.workshopapp.controller.appController.just_BPSearch"
+	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Page 
+	    title="{i18n>otherTitle}"
+	    enableScrolling="false"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+
+        <content>
+
+        </content>
+        
+		<footer>
+		</footer>
+	</Page>
+</mvc:View>

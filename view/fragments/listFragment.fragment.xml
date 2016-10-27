@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<StandardListItem
+		title="{ %Attribute% }"
+		type="Inactive"
+		description="Some Item Info"
+		icon="sap-icon://accidental-leave"
+		iconDensityAware="false"
+		iconInset="false" />
+</core:FragmentDefinition>
