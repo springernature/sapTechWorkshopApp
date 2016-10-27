@@ -11,7 +11,7 @@
 			<ObjectHeader title="{ %HeaderAttribute1% }" number="" numberUnit="">
 				<ObjectAttribute title="Name"	text="{PartnerName}" />
 				<ObjectAttribute title="Address"	text="{Partner}" />
-				<ObjectAttribute title="SalesOrg"	text="{SalesOrg}" />
+				<ObjectAttribute title="SalesOrg"	text="{SalesOrg}" /> 
 			</ObjectHeader>
 			<IconTabBar select="onDetailSelect" id="idIconTabBar">
 				<items>
