@@ -65,23 +65,32 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		// bind external odata service
 		// 
 
+// externe URL needs to support JSONP - or to be in same domain
+// http://stackoverflow.com/questions/10507345/ajax-and-jsonp-parseerror-and-uncaught-syntaxerror-unexpected-token
+		
+		//var vUrl = "https://www.bloomberg.com/markets/api/comparison/data-bfix?currencies=AUDUSD,USDILS,EURUSD,EURMXN,EURNZD&dateTime=2016-10-28T12:00:00Z";
 		$.ajax({
-			url: "http://52.55.195.82:8000/com/springernature/saptech/shrpa/services/SHRPA.xsodata/project?$format=json",
+    		crossDomain: true,
+    		contentType: "application/json; charset=utf-8",
+			url: "https://www.bloomberg.com/markets/api/comparison/data-bfix",
 			type: "GET", //or POST?
+    		jsonpCallback: 'callback',
+			data: { currencies: "AUDUSD,USDILS,EURUSD,EURMXN,EURNZD",
+					dateTime: "2016-10-28T12:00:00Z" }, 
 			dataType: "jsonp",
 			xhrFields: {
-				withCredentials: true
+				withCredentials: false
 			},
 			beforeSend: function(request) {
-				request.setRequestHeader("Authorization", "Basic U1lTVEVNOiNhbmFWMHJh");
+				//request.setRequestHeader("Authorization", "Basic U1lTVEVNOiNhbmFWMHJh");
 			},
 			success: function(dataWeGotViaJsonp) {
 				console.log(dataWeGotViaJsonp);
 
 			},
-			error: function() {
-				alert("error");
-
+			error: function(oError) {
+				console.log("error");
+				console.log(oError);
 			}
 		});
 
@@ -118,7 +127,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		if (typeof this.jsonAppModel === "undefined") {
 			this.jsonAppModel = sap.ui.getCore().getModel("jsonAppModel");
 		}
-
+		
 		this.jsonAppModel.currentScreen = "HeadOfAccountApp";
 		sap.ui.getCore().setModel(this.jsonAppModel, "jsonAppModel");
 
