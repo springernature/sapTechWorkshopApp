@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+					<ObjectListItem type="{device>/listItemType}"
+									press="onSelect" 
+									title="{project_id}" 
+									number="{projectmanager_id}" 
+									numberUnit="{salesperson_id}"/>
+</core:FragmentDefinition>

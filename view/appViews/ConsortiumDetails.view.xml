@@ -8,8 +8,8 @@
 		class="sapUiFioriObjectPage" 
 		title="{i18n>detailTitle}">
 		<content>
-			<ObjectHeader title="{ %HeaderAttribute1% }" number="" numberUnit="">
-				<ObjectAttribute title="HeaderAttribute1"	text="{ %HeaderAttribute2% }" />
+			<ObjectHeader title="{PartnerName}" number="" numberUnit="">
+				<ObjectAttribute title="HeaderAttribute1"	text="{Consortium}" />
 				<ObjectAttribute title="HeaderAttribute2"	text="{ %HeaderAttribute3% }" />
 			</ObjectHeader>
 			<IconTabBar select="onDetailSelect" id="idIconTabBar">

@@ -14,7 +14,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 				this.onAfterShow(evt);
 			}, this)
 		});
-		
+
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
 
 		var oEventBus = this.getEventBus();
@@ -61,17 +61,67 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 			//On the empty hash select the first item
 			this.selectFirstItem();
 		});
+
+		// bind external odata service
+		// 
+
+		$.ajax({
+			url: "http://52.55.195.82:8000/com/springernature/saptech/shrpa/services/SHRPA.xsodata/project?$format=json",
+			type: "GET", //or POST?
+			dataType: "jsonp",
+			xhrFields: {
+				withCredentials: true
+			},
+			beforeSend: function(request) {
+				request.setRequestHeader("Authorization", "Basic U1lTVEVNOiNhbmFWMHJh");
+			},
+			success: function(dataWeGotViaJsonp) {
+				console.log(dataWeGotViaJsonp);
+
+			},
+			error: function() {
+				alert("error");
+
+			}
+		});
+
+		/*
+				$.ajax({
+					url: "https://SYSTEM:#anaV0ra@52.55.195.82:8000/com/springernature/saptech/shrpa/services/SHRPA.xsodata/project?$format=json",
+					type: "GET", //or POST?
+					dataType: "jsonp",
+					success: function(dataWeGotViaJsonp) {
+						console.log(dataWeGotViaJsonp);
+
+					},
+					error: function() {
+						alert("error");
+
+					}
+				});
+		*/
+
+		/*
+						var sAggregationPath = "/WorkshopTestDataSet"; // odata service
+				var oListMails = this.getView().byId("listHeadOfAccount");
+				oListMails.unbindAggregation("items");
+				oListMails.bindAggregation("items", {
+					path: sAggregationPath,
+					template: sap.ui.xmlfragment("com.springer.workshopapp.view.fragments.listFragment", this)
+				});
+		*/
+
 	},
 
 	onAfterShow: function() {
 		// prüfen ob JSON model geladen ist mit globalen infos
-		if(typeof this.jsonAppModel === "undefined") {
+		if (typeof this.jsonAppModel === "undefined") {
 			this.jsonAppModel = sap.ui.getCore().getModel("jsonAppModel");
 		}
-		
+
 		this.jsonAppModel.currentScreen = "HeadOfAccountApp";
 		sap.ui.getCore().setModel(this.jsonAppModel, "jsonAppModel");
-		
+
 		this.getView().setBusy(false);
 	},
 
@@ -150,17 +200,16 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		// add filter for search
 		var filters = [];
 		var searchString = this.getView().byId("searchField").getValue();
-		
+
 		var searchAttribute = "Attribute1";
 		if (this.getView().byId("radA_button_opt2").getSelected() === true) {
 			searchAttribute = "Attribute2";
 		}
-		
+
 		var searchOperator = sap.ui.model.FilterOperator.EQ;
 		if (this.getView().byId("radB_button_opt2").getSelected() === true) {
 			searchOperator = sap.ui.model.FilterOperator.Contains;
 		}
-		
 
 		if (searchString && searchString.length > 0) {
 			filters = [new sap.ui.model.Filter(searchAttribute, searchOperator, searchString)];
@@ -168,14 +217,14 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 
 		// update list binding
 		var list = this.getView().byId("HeadOfAccountMasterList");
-		
+
 		sap.m.MessageToast.show("Search: " + searchOperator + " " + searchAttribute);
-		
+
 		/*
 		list.getBinding("items").filter(filters);
 		this._selectedItemIdx = list.indexOfItem(list.getSelectedItem());
 		*/
-	
+
 	},
 
 	/**

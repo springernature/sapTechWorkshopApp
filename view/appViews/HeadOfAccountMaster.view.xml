@@ -62,7 +62,6 @@
 		    
 			<!-- list with HoT -->
 			<List	id="HeadOfAccountMasterList" 
-					items="{/WorkshopTestDataSet}"  
 					mode="{device>/listMode}" 
 					noDataText="{i18n>masterListNoDataText}" 
 					select="onSelect" 
@@ -70,11 +69,7 @@
                     growingThreshold="30"
 					growingScrollToLoad="true">
 				<items>
-					<ObjectListItem type="{device>/listItemType}"
-									press="onSelect" 
-									title="{Partner}" 
-									number="{PartnerName}" 
-									numberUnit="{HeadOfAccount}"/>
+<!-- fragment implementation  -  listHoTMaster -->
 				</items>
 			</List>
 		</content>
