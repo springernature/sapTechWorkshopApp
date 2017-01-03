@@ -18,7 +18,7 @@ sap.ui.core.UIComponent.extend("com.springer.workshopapp.Component", {
 			resourceBundle: "i18n/messageBundle.properties",
 			serviceConfig: {
 				name: "WORKSHOPAPP_SRV",
-				serviceUrl: "/sap/opu/odata/SBMC/WORKSHOPAPP_SRV/"
+				serviceUrl: "/GTS_GATEWAY/sap/opu/odata/SBMC/WORKSHOPAPP_SRV/"
 			}
 		},
 

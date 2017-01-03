@@ -63,21 +63,17 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 		});
 
 		// bind external odata service
-		// 
 
-// externe URL needs to support JSONP - or to be in same domain
-// http://stackoverflow.com/questions/10507345/ajax-and-jsonp-parseerror-and-uncaught-syntaxerror-unexpected-token
-		
 		//var vUrl = "https://www.bloomberg.com/markets/api/comparison/data-bfix?currencies=AUDUSD,USDILS,EURUSD,EURMXN,EURNZD&dateTime=2016-10-28T12:00:00Z";
 		$.ajax({
     		crossDomain: true,
     		contentType: "application/json; charset=utf-8",
-			url: "https://www.bloomberg.com/markets/api/comparison/data-bfix",
+			url: "http://hub.springer-sbm.com/BLOOMBERG_EXCHANGE_RATES",
 			type: "GET", //or POST?
     		jsonpCallback: 'callback',
 			data: { currencies: "AUDUSD,USDILS,EURUSD,EURMXN,EURNZD",
-					dateTime: "2016-10-28T12:00:00Z" }, 
-			dataType: "jsonp",
+					dateTime: "2016-10-28T13:00:00Z" }, 
+			dataType: "json",
 			xhrFields: {
 				withCredentials: false
 			},
@@ -85,6 +81,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 				//request.setRequestHeader("Authorization", "Basic U1lTVEVNOiNhbmFWMHJh");
 			},
 			success: function(dataWeGotViaJsonp) {
+				console.log("SUCCESS");
 				console.log(dataWeGotViaJsonp);
 
 			},

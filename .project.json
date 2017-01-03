@@ -1,6 +1,6 @@
 {
   "mockpreview": {
-    "mockUri": "/sap/opu/odata/SBMC/WORKSHOPAPP_SRV/",
+    "mockUri": "/GTS_GATEWAY/sap/opu/odata/SBMC/WORKSHOPAPP_SRV/",
     "metadataFilePath": "",
     "mockRequestsFilePath": "",
     "loadJSONFiles": false,
@@ -18,7 +18,7 @@
     "sap.watt.uitools.ide.fiori"
   ],
   "deploy": {
-    "destination": "sprgts",
+    "destination": "sprgtskong",
     "name": "ZSAPWORKSHOPAPP"
   },
   "hybrid": {

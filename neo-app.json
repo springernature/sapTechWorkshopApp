@@ -2,13 +2,13 @@
   "welcomeFile": "index.html",
   "routes": [
     {
-      "path": "/sap/opu/odata",
+      "path": "/GTS_GATEWAY/sap/opu/odata",
       "target": {
         "type": "destination",
-        "name": "sprgts",
-        "entryPath": "/sap/opu/odata"
+        "name": "sprgtskong",
+        "entryPath": "/GTS_GATEWAY/sap/opu/odata"
       },
-      "description": "SAP GTS"
+      "description": "SAP Kong GTS"
     },
     {
       "path": "/resources",
