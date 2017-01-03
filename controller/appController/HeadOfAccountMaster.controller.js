@@ -6,7 +6,7 @@ com.springer.workshopapp.util.Controller.extend("com.springer.workshopapp.contro
 	/**
 	 * Called when the master list controller is instantiated. 
 	 * It sets up the event handling for the master/detail communication and other lifecycle tasks.
-	 */
+	 */ 
 	onInit: function() {
 		// event after screen objects loaded
 		this.getView().addEventDelegate({

@@ -2,7 +2,7 @@
   "mockpreview": {
     "mockUri": "/GTS_GATEWAY/sap/opu/odata/SBMC/WORKSHOPAPP_SRV/",
     "metadataFilePath": "",
-    "mockRequestsFilePath": "",
+    "mockRequestsFilePath": "", 
     "loadJSONFiles": false,
     "loadCustomRequests": false
   },

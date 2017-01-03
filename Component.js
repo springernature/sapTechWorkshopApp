@@ -5,7 +5,7 @@ jQuery.sap.require("com.springer.workshopapp.MyRouter");
 sap.ui.core.UIComponent.extend("com.springer.workshopapp.Component", {
 	metadata: {
 		name: "Springer SAP Tech Workshop App",
-		version: "1.0",
+		version: "1.0", 
 		includes: [],
 		dependencies: {
 			libs: ["sap.m", "sap.ui.layout"],
